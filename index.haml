@@ -1,0 +1,66 @@
+- links = {:"Github" => "http://www.github.com/Dinosaure/",
+           :"BitBucket" => "http://www.bitbucket.org/dinosaure/",
+           :"Le Programmeur Moderne" => "http://www.progmod.org/~Dinosaure/",
+           :"Gitorious" => "http://www.gitorious.org/~dinosaure/",
+           :"Twitter" => "http://www.twitter.com/Dinoosaure/",
+           :"Background" => "http://www.flickr.com/photos/cubagallery/",
+           :"Blog" => "http://blog.osau.re/",
+           :"Cumulus" => "http://cumulus.mirai.fr/"}
+:plain
+  <?php
+    if (($s = scandir('data')) != FALSE)
+      {   
+        $s = array_values(array_diff($s, array(".", "..")));
+        $wall = "data/" . $s[rand(0, count($s) - 1)];
+      }   
+    else
+      $wall = "wall.jpg";
+  ?>
+!!! 5
+/[if lte IE 7]
+  %html{:class => "no-js ie7 oldie",
+        :lang => "fr"}
+/[if IE 8]
+  %html{:class => "no-js ie8 oldie",
+        :lang => "fr"}
+/[if gt IE 8]
+  %html{:class => "no-js",
+        :lang => "fr"}
+
+%head
+  %meta{:charset => "UTF-8"}
+  %title Dinosaure
+  %meta{:name => "viewport",
+        :content => "with=device-width"}
+  %link{:rel => "stylesheet",
+        :href => "css/knacss.css",
+        :media => "all"}
+  %link{:rel => "stylesheet",
+        :href => "css/site.css",
+        :media => "all"}
+  %style
+    :sass
+      body
+        :background-image url('<?php echo $wall; ?>')
+
+%body.mw960p.center
+  #header.header.w300p.mod.ml2.mt2
+    %p
+      Romain Calascibetta
+      %br
+      Dinosaure
+  #links.links.w500p.mod.ml2.mt2
+    - links.each do |name, url|
+      %div.left
+        %p
+          %a{:href => "#{url}"}= name 
+  :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-10541778-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
