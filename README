@@ -1,0 +1,11 @@
+Voici le site internet http://din.osau.re/ qui utilise Haml et Sass (ainsi que
+Guard en local pour updater le site dès qu'il y a un changement). C'est à titre
+d'exemple et surtout pour apprendre à utiliser ses outils (initiative prise
+après la lecture de cet article -
+http://linuxfr.org/users/crev/journaux/ecrire-une-page-web-de-nos-jours).
+
+Les dépendances:
+ruby 1.9
+haml 3.1
+sass 3.2
+guard 1.5
